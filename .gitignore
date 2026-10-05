@@ -1,0 +1,22 @@
+# Autotools / configure
+Makefile
+config.log
+config.status
+
+# Built binary
+/qodem
+
+# Object files
+*.o
+*.a
+
+# Dependency/build directories
+.deps/
+objs/
+
+# Generated build files
+.dirstamp
+stamp-h1
+
+# Generated configuration
+source/config.h
