@@ -1,0 +1,26 @@
+qodem-x11 (1.0.1-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Autumn Lamonte <AutumnWalksTheLake@gmail.com>  Sun, 18 Jun 2017 12:00:00 -0600
+
+qodem-x11 (1.0.0-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Autumn Lamonte <AutumnWalksTheLake@gmail.com>  Sun, 18 Jun 2017 12:00:00 -0600
+
+qodem-x11 (1.0~beta-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Autumn Lamonte <AutumnWalksTheLake@gmail.com>  Wed, 27 Apr 2016 12:00:00 -0600
+
+qodem-x11 (1.0~alpha-1) unstable; urgency=low
+
+  * New upstream release
+  * Separate into two packages: qodem and qodem-x11
+  * Initial release (Closes: #123456)
+
+ -- Autumn Lamonte <AutumnWalksTheLake@gmail.com>  Sat, 01 Jan 2011 12:00:00 -0600
+
