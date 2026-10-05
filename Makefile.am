@@ -2,12 +2,12 @@ if Q_X11_BUILD
 bin_PROGRAMS = qodem-x11
 man_MANS = docs/qodem-x11.1
 else
-bin_PROGRAMS = qodem
+bin_PROGRAMS = qodem sklaffterm
 bin_SCRIPTS = bin/xqodem
 man_MANS = docs/qodem.1 docs/xqodem.1
 endif
 
-qodem_SOURCES = \
+COMMON_SOURCES = \
 source/ansi.c \
 source/atascii.c \
 source/avatar.c \
@@ -75,6 +75,15 @@ source/vt52.h \
 source/xmodem.h \
 source/zmodem.h \
 source/qcurses.h
+
+qodem_SOURCES = \
+$(COMMON_SOURCES) \
+source/qodem_main.c
+
+sklaffterm_SOURCES = \
+$(COMMON_SOURCES) \
+source/sklaffterm_main.c
+
 qodem_x11_SOURCES = $(qodem_SOURCES)
 
 AM_CPPFLAGS = -I. -I@srcdir@

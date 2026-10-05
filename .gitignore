@@ -5,6 +5,7 @@ config.status
 
 # Built binary
 /qodem
+/sklaffterm
 
 # Object files
 *.o
@@ -20,3 +21,9 @@ stamp-h1
 
 # Generated configuration
 source/config.h
+
+# Autotools temporary files
+autom4te.cache/
+*~
+
+

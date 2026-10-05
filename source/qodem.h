@@ -806,6 +806,10 @@ extern void close_shell_connection();
  * call, set by dial_out().
  */
 extern void (*close_function)();
+/*
+ * New main 2026-10-05 PL
+*/
+extern int qodem_main(int argc, char * const argv[]);
 
 #ifdef __cplusplus
 }

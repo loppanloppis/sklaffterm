@@ -3906,10 +3906,8 @@ no_initial_call:
  * @param argv command-line arguments
  * @return the final program return code
  */
-int main(int argc, char * const argv[]) {
-    return qodem_main(argc, argv);
-}
-
+ /* moved to qodem_main.c and sklaffterm_main.c 2026-10-05 PL */
+ 
 #ifdef Q_PDCURSES_WIN32
 
 /**
