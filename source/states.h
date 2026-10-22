@@ -46,6 +46,11 @@ typedef enum Q_PROGRAM_STATES {
      * Phonebook.  See phonebook.c.
      */
     Q_STATE_PHONEBOOK,          /* Dialing directory */
+    
+    /**
+     * SklaffTERM main UI.
+     */
+    Q_STATE_SKLAFFTERM,          /* SklaffTERM UI */
 
     /**
      * TERMINAL mode.  See console.c.
@@ -158,6 +163,8 @@ extern void screensaver_keyboard_handler(const int keystroke, const int flags);
  * Draw screen for the screensaver.
  */
 extern void screensaver_refresh();
+
+extern Q_PROGRAM_STATE q_startup_state;
 
 #ifdef __cplusplus
 }

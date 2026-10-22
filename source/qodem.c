@@ -2616,6 +2616,7 @@ static void data_handler() {
         case Q_STATE_MODEM_CONFIG:
 #endif
         case Q_STATE_PHONEBOOK:
+        case Q_STATE_SKLAFFTERM:
         case Q_STATE_TRANSLATE_EDITOR_8BIT:
         case Q_STATE_TRANSLATE_EDITOR_UNICODE:
         case Q_STATE_EXIT:
@@ -3795,7 +3796,11 @@ no_initial_call:
         } else if (initial_call.address != NULL) {
             q_keyboard_blocks = Q_TRUE;
             q_current_dial_entry = &initial_call;
-            do_dialer();
+            do_dialer();	
+
+        } else if (q_startup_state != Q_STATE_INITIALIZATION) {
+            switch_state(q_startup_state);
+
         } else if ((strncmp(get_option(Q_OPTION_START_PHONEBOOK),
                 "true", 4) == 0) && (q_status.xterm_mode == Q_FALSE)) {
             switch_state(Q_STATE_PHONEBOOK);

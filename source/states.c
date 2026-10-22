@@ -31,11 +31,14 @@
 #include "screen.h"
 #include "options.h"
 #include "states.h"
+#include "sklaffterm_ui.h"
 
 /**
  * Global state.
  */
 Q_PROGRAM_STATE q_program_state;
+
+Q_PROGRAM_STATE q_startup_state = Q_STATE_INITIALIZATION;
 
 /**
  * Whether or not the keyboard is supposed to be blocking (last argument to
@@ -124,6 +127,10 @@ void keyboard_handler() {
         translate_table_editor_unicode_keyboard_handler(keystroke, flags);
         break;
 
+    case Q_STATE_SKLAFFTERM:
+        sklaffterm_keyboard_handler(keystroke, flags);
+        break;
+        
     case Q_STATE_PHONEBOOK:
         phonebook_keyboard_handler(keystroke, flags);
         break;
@@ -249,6 +256,10 @@ void refresh_handler() {
         translate_table_editor_unicode_refresh();
         break;
 
+    case Q_STATE_SKLAFFTERM:
+        sklaffterm_refresh();
+        break;
+
     case Q_STATE_PHONEBOOK:
     case Q_STATE_DIALER:
         phonebook_refresh();
@@ -370,6 +381,7 @@ void switch_state(const Q_PROGRAM_STATE new_state) {
     case Q_STATE_MODEM_CONFIG:
 #endif
     case Q_STATE_PHONEBOOK:
+    case Q_STATE_SKLAFFTERM:
     case Q_STATE_TRANSLATE_EDITOR_8BIT:
     case Q_STATE_TRANSLATE_EDITOR_UNICODE:
         set_blocking_input(Q_TRUE);
