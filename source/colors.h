@@ -209,6 +209,14 @@ typedef enum Q_COLORS {
     Q_COLOR_HELP_LINK_SELECTED,
 
     /**
+     * SklaffTERM UI.
+     */
+    Q_COLOR_SKLAFFTERM_BORDER,
+    Q_COLOR_SKLAFFTERM_TEXT,
+    Q_COLOR_SKLAFFTERM_SELECTED,
+    Q_COLOR_SKLAFFTERM_ACCENT,
+
+    /**
      * Max color index, not actually used.
      */
     Q_COLOR_MAX

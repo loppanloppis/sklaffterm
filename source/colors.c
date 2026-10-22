@@ -802,6 +802,22 @@ void q_setup_colors() {
     q_text_colors[Q_COLOR_HELP_LINK_SELECTED].fg = COLOR_WHITE;
     q_text_colors[Q_COLOR_HELP_LINK_SELECTED].bg = COLOR_CYAN;
 
+    q_text_colors[Q_COLOR_SKLAFFTERM_BORDER].bold = Q_FALSE;
+    q_text_colors[Q_COLOR_SKLAFFTERM_BORDER].fg = COLOR_RED;
+    q_text_colors[Q_COLOR_SKLAFFTERM_BORDER].bg = COLOR_BLACK;
+
+    q_text_colors[Q_COLOR_SKLAFFTERM_TEXT].bold = Q_FALSE;
+    q_text_colors[Q_COLOR_SKLAFFTERM_TEXT].fg = COLOR_WHITE;
+    q_text_colors[Q_COLOR_SKLAFFTERM_TEXT].bg = COLOR_BLACK;
+
+    q_text_colors[Q_COLOR_SKLAFFTERM_SELECTED].bold = Q_TRUE;
+    q_text_colors[Q_COLOR_SKLAFFTERM_SELECTED].fg = COLOR_WHITE;
+    q_text_colors[Q_COLOR_SKLAFFTERM_SELECTED].bg = COLOR_BLACK;
+
+    q_text_colors[Q_COLOR_SKLAFFTERM_ACCENT].bold = Q_TRUE;
+    q_text_colors[Q_COLOR_SKLAFFTERM_ACCENT].fg = COLOR_RED;
+    q_text_colors[Q_COLOR_SKLAFFTERM_ACCENT].bg = COLOR_BLACK;
+
     /*
      * Override with whatever may be in colors.cfg.
      */
