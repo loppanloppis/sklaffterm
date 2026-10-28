@@ -84,6 +84,8 @@ source/qodem_main.c
 
 sklaffterm_SOURCES = \
 $(COMMON_SOURCES) \
+source/sklaffterm_config.c \
+source/sklaffterm_config.h \
 source/sklaffterm_main.c
 
 qodem_x11_SOURCES = $(qodem_SOURCES)
