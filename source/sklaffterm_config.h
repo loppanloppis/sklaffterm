@@ -23,6 +23,10 @@ typedef struct {
 extern SKLAFFTERM_CONFIG sklaffterm_config;
 
 void sklaffterm_config_init(void);
+void sklaffterm_config_load(void);
+void sklaffterm_config_save(void);
 void sklaffterm_config_free(void);
+
+const char *sklaffterm_baud_to_string(SKLAFF_BAUD baud);
 
 #endif

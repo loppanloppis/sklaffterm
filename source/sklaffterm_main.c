@@ -8,6 +8,7 @@ main(int argc, char * const argv[])
     int rc;
 
     sklaffterm_config_init();
+    sklaffterm_config_load();
 
     q_startup_state = Q_STATE_SKLAFFTERM;
 
