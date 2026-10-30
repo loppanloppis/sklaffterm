@@ -68,6 +68,8 @@ source/qodem.h \
 source/screen.h \
 source/script.h \
 source/scrollback.h \
+source/sklaffterm_phonebook.c \
+source/sklaffterm_phonebook.h \
 source/sklaffterm_ui.c \
 source/sklaffterm_ui.h \
 source/states.h \

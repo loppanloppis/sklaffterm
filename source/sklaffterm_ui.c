@@ -5,6 +5,7 @@
 
 #include "screen.h"
 #include "states.h"
+#include "sklaffterm_phonebook.h"
 #include "sklaffterm_ui.h"
 
 static void
@@ -47,22 +48,6 @@ draw_phonebook_frame(const int left, const int top,
                             Q_COLOR_SKLAFFTERM_BORDER);
 }
 
-typedef struct {
-    const char *name;
-    const char *protocol;
-    const char *encoding;
-} SKLAFFTERM_BBS_ENTRY;
-
-
-static const SKLAFFTERM_BBS_ENTRY test_entries[] = {
-    { "Twilight Node", "SSH",    "UTF-8" },
-    { "SklaffKOM Test", "Telnet", "UTF-8" },
-    { "Another BBS",   "Telnet", "CP437" }
-};
-
-#define TEST_ENTRY_COUNT \
-    ((int) (sizeof(test_entries) / sizeof(test_entries[0])))
-
 static int selected_entry = 0;
 
 
@@ -98,16 +83,23 @@ sklaffterm_keyboard_handler(const int keystroke, const int flags)
     switch (keystroke) {
 
     case Q_KEY_UP:
-        selected_entry--;
-        if (selected_entry < 0) {
-            selected_entry = TEST_ENTRY_COUNT - 1;
+        if (sklaffterm_phonebook_count() > 0) {
+            selected_entry--;
+            if (selected_entry < 0) {
+                selected_entry =
+                    (int) sklaffterm_phonebook_count() - 1;
+            }
         }
         break;
 
     case Q_KEY_DOWN:
-        selected_entry++;
-        if (selected_entry >= TEST_ENTRY_COUNT) {
-            selected_entry = 0;
+        if (sklaffterm_phonebook_count() > 0) {
+            selected_entry++;
+            if (selected_entry >=
+                (int) sklaffterm_phonebook_count()) {
+
+                selected_entry = 0;
+            }
         }
         break;
 
@@ -134,12 +126,16 @@ sklaffterm_refresh(void)
     int row;
     int i;
     Q_COLOR color;
+    const SKLAFFTERM_PHONE_ENTRY *entry;
+    size_t phonebook_count;
     const char *status_line =
         "Alt-A Add | Alt-E Edit | Alt-D Delete | Alt-M Menu";
     int status_x;
 
     screen_get_dimensions(&height, &width);
     screen_clear();
+
+    phonebook_count = sklaffterm_phonebook_count();
 
     /*
      * Keep the first UI simple, but don't explode in a very small terminal.
@@ -161,7 +157,7 @@ sklaffterm_refresh(void)
     left = 2;
     right = width - 3;
     top = 3;
-    bottom = top + TEST_ENTRY_COUNT + 4;
+    bottom = top + (int) phonebook_count + 4;
 
     /*
      * Header.
@@ -177,8 +173,13 @@ sklaffterm_refresh(void)
 
     row = top + 2;
 
-    for (i = 0; i < TEST_ENTRY_COUNT; i++) {
+    for (i = 0; i < (int) phonebook_count; i++) {
 
+        entry = sklaffterm_phonebook_get((size_t) i);
+
+        if (entry == NULL) {
+            continue;
+        }
 
         if (i == selected_entry) {
             color = Q_COLOR_SKLAFFTERM_SELECTED;
@@ -192,9 +193,9 @@ sklaffterm_refresh(void)
             color,
             "%c %-32s %-8s %-8s",
             (i == selected_entry ? '>' : ' '),
-            test_entries[i].name,
-            test_entries[i].protocol,
-            test_entries[i].encoding
+            entry->name,
+            sklaffterm_protocol_to_string(entry->protocol),
+            sklaffterm_encoding_to_string(entry->encoding)
         );
 
         row++;

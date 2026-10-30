@@ -122,7 +122,8 @@ am__objects_1 = source/ansi.$(OBJEXT) source/atascii.$(OBJEXT) \
 	source/scrollback.$(OBJEXT) source/states.$(OBJEXT) \
 	source/translate.$(OBJEXT) source/vt100.$(OBJEXT) \
 	source/vt52.$(OBJEXT) source/xmodem.$(OBJEXT) \
-	source/zmodem.$(OBJEXT) source/sklaffterm_ui.$(OBJEXT)
+	source/zmodem.$(OBJEXT) source/sklaffterm_phonebook.$(OBJEXT) \
+	source/sklaffterm_ui.$(OBJEXT)
 am_qodem_OBJECTS = $(am__objects_1) source/qodem_main.$(OBJEXT)
 qodem_OBJECTS = $(am_qodem_OBJECTS)
 qodem_LDADD = $(LDADD)
@@ -195,6 +196,7 @@ am__depfiles_remade = source/$(DEPDIR)/ansi.Po \
 	source/$(DEPDIR)/scrollback.Po \
 	source/$(DEPDIR)/sklaffterm_config.Po \
 	source/$(DEPDIR)/sklaffterm_main.Po \
+	source/$(DEPDIR)/sklaffterm_phonebook.Po \
 	source/$(DEPDIR)/sklaffterm_ui.Po source/$(DEPDIR)/states.Po \
 	source/$(DEPDIR)/translate.Po source/$(DEPDIR)/vt100.Po \
 	source/$(DEPDIR)/vt52.Po source/$(DEPDIR)/xmodem.Po \
@@ -458,6 +460,8 @@ source/qodem.h \
 source/screen.h \
 source/script.h \
 source/scrollback.h \
+source/sklaffterm_phonebook.c \
+source/sklaffterm_phonebook.h \
 source/sklaffterm_ui.c \
 source/sklaffterm_ui.h \
 source/states.h \
@@ -674,6 +678,8 @@ source/xmodem.$(OBJEXT): source/$(am__dirstamp) \
 	source/$(DEPDIR)/$(am__dirstamp)
 source/zmodem.$(OBJEXT): source/$(am__dirstamp) \
 	source/$(DEPDIR)/$(am__dirstamp)
+source/sklaffterm_phonebook.$(OBJEXT): source/$(am__dirstamp) \
+	source/$(DEPDIR)/$(am__dirstamp)
 source/sklaffterm_ui.$(OBJEXT): source/$(am__dirstamp) \
 	source/$(DEPDIR)/$(am__dirstamp)
 source/qodem_main.$(OBJEXT): source/$(am__dirstamp) \
@@ -767,6 +773,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@source/$(DEPDIR)/scrollback.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@source/$(DEPDIR)/sklaffterm_config.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@source/$(DEPDIR)/sklaffterm_main.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@source/$(DEPDIR)/sklaffterm_phonebook.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@source/$(DEPDIR)/sklaffterm_ui.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@source/$(DEPDIR)/states.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@source/$(DEPDIR)/translate.Po@am__quote@ # am--include-marker
@@ -1221,6 +1228,7 @@ distclean: distclean-recursive
 	-rm -f source/$(DEPDIR)/scrollback.Po
 	-rm -f source/$(DEPDIR)/sklaffterm_config.Po
 	-rm -f source/$(DEPDIR)/sklaffterm_main.Po
+	-rm -f source/$(DEPDIR)/sklaffterm_phonebook.Po
 	-rm -f source/$(DEPDIR)/sklaffterm_ui.Po
 	-rm -f source/$(DEPDIR)/states.Po
 	-rm -f source/$(DEPDIR)/translate.Po
@@ -1305,6 +1313,7 @@ maintainer-clean: maintainer-clean-recursive
 	-rm -f source/$(DEPDIR)/scrollback.Po
 	-rm -f source/$(DEPDIR)/sklaffterm_config.Po
 	-rm -f source/$(DEPDIR)/sklaffterm_main.Po
+	-rm -f source/$(DEPDIR)/sklaffterm_phonebook.Po
 	-rm -f source/$(DEPDIR)/sklaffterm_ui.Po
 	-rm -f source/$(DEPDIR)/states.Po
 	-rm -f source/$(DEPDIR)/translate.Po
