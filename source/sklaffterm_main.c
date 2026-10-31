@@ -12,6 +12,7 @@ main(int argc, char * const argv[])
     sklaffterm_config_load();
 
     sklaffterm_phonebook_init();
+    sklaffterm_phonebook_load();
 
     q_startup_state = Q_STATE_SKLAFFTERM;
 

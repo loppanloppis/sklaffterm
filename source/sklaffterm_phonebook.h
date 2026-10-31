@@ -24,6 +24,8 @@ typedef struct {
 } SKLAFFTERM_PHONE_ENTRY;
 
 void sklaffterm_phonebook_init(void);
+void sklaffterm_phonebook_load(void);
+void sklaffterm_phonebook_save(void);
 void sklaffterm_phonebook_free(void);
 
 size_t sklaffterm_phonebook_count(void);
