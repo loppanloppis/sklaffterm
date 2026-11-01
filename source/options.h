@@ -248,6 +248,18 @@ extern const char * get_option_description(const Q_OPTION option);
  */
 extern const char * get_option_default(const Q_OPTION option);
 
+/**
+ * Replace an option value in memory.
+ * This does not write the Qodem configuration file.
+ */
+extern void set_option_value(const Q_OPTION option, const char * value);
+
+/**
+ * Optional hook called after all option files have been read, but before
+ * Qodem derives its runtime state from the options.
+ */
+extern void (*q_options_loaded_hook)(void);
+
 #ifdef __cplusplus
 }
 #endif

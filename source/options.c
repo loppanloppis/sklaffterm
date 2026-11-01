@@ -53,6 +53,8 @@ struct option_struct {
     char * comment;
 };
 
+void (*q_options_loaded_hook)(void) = NULL;
+
 /* The full path to the options file. */
 static char home_directory_options_filename[FILENAME_SIZE];
 
@@ -1319,17 +1321,23 @@ Q_BOOL save_options(const char * filename) {
  * @param option the option to set
  * @param value the new value
  */
-static void set_option(struct option_struct * option, char * value) {
-    char * new_value = value;
+static void
+set_option(struct option_struct * option, const char * value)
+{
+    const char *new_value;
+
+    new_value = value;
+
     while (((q_isspace(new_value[0])) || (new_value[0] == '='))
            && (strlen(new_value) > 0)) {
         new_value++;
     }
-    new_value = Xstrdup(new_value, __FILE__, __LINE__);;
+
     if (option->value != NULL) {
         Xfree(option->value, __FILE__, __LINE__);
     }
-    option->value = new_value;
+
+    option->value = Xstrdup(new_value, __FILE__, __LINE__);
 }
 
 /**
@@ -1497,6 +1505,25 @@ static struct option_struct * find_option(const Q_OPTION option) {
         current_option++;
     }
     return NULL;
+}
+
+void
+set_option_value(const Q_OPTION option, const char *value)
+{
+    struct option_struct *current_option;
+
+    if (value == NULL) {
+        return;
+    }
+
+    current_option = find_option(option);
+
+    if (current_option == NULL) {
+        return;
+    }
+
+    set_option(current_option, value);
+    check_option(current_option);
 }
 
 /**
@@ -1891,6 +1918,14 @@ no_more_config_files:
      *
      * ----------------------------------------------------------------------
      */
+
+    /*
+     * Give frontends a chance to override loaded options before Qodem
+     * derives runtime state from them.
+     */
+    if (q_options_loaded_hook != NULL) {
+        q_options_loaded_hook();
+    }
     check_and_create_directories();
 
     /*
@@ -2182,3 +2217,5 @@ void reset_scrollback_save_type() {
         q_status.scrollback_save_type = Q_CAPTURE_TYPE_ASK;
     }
 }
+
+

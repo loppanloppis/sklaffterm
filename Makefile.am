@@ -86,6 +86,8 @@ source/qodem_main.c
 
 sklaffterm_SOURCES = \
 $(COMMON_SOURCES) \
+source/sklaffterm_adapter.c \
+source/sklaffterm_adapter.h \
 source/sklaffterm_config.c \
 source/sklaffterm_config.h \
 source/sklaffterm_main.c
